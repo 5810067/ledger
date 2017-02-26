@@ -6,7 +6,9 @@ from django.utils import timezone
 from .models import Note
 import csv
 
-def index(request):
+theme = '1'
+
+def index(request,theme):
     # get object
     lists = Note.objects.order_by('pub_date')
     balance = total_money()  # total money to show in index
@@ -14,7 +16,7 @@ def index(request):
     income = total[0]  # income to show in table
     expense = -total[1]  # expense to show in table
     context = {'lists':lists,'balance':balance,
-               'income':income,'expense':expense}
+               'income':income,'expense':expense,'theme':theme}
     return render(request, 'ledger/index.html',context)
     
 def add_list(request):  # add note 
@@ -47,7 +49,7 @@ def verify(request):
 def edit_list(request):  # use to view edit page
     lists = Note.objects.order_by('pub_date')  # get obj. and order by date
     total_index = total_money()  # all money
-    context = {'lists':lists,'total_index':total_index}
+    context = {'lists':lists,'total_index':total_index,'theme':theme}
     return render(request,'ledger/delete_page.html',context)
 
 def del_list(request, note_id):  # delete note
@@ -99,4 +101,5 @@ def theme_select(request):
 
 def change_theme(request):
     theme = request.POST['selected_theme']
+    return HttpResponseRedirect(reverse('ledger:index',args=(theme,)))
     

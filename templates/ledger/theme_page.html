@@ -9,9 +9,10 @@
 </div>
 <div class="select_block">
 <form action="{% url 'ledger:change_theme' %}" method="post">
-<input type="radio" name="seleced_theme" value="t1">Theme 1<br><br>
-<input type="radio" name="seleced_theme" value="t2">Theme 2
-
+{% csrf_token %}
+<input type="radio" name="selected_theme" value="1">Theme 1<br><br>
+<input type="radio" name="selected_theme" value="2">Theme 2
+<input type="submit" value="Submit">
 </form> 
 </div>
 </body>

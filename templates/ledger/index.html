@@ -3,7 +3,11 @@
 <head>
     <title>Ledger</title>
 </head>
-<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_2.css' %}" />
+{% if theme == "1" %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ledger/style_1.css' %}" />
+{% else %}
+    <link rel="stylesheet" type="text/css" href="{% static 'ledger/style_2.css' %}" />
+{% endif %}
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -15,7 +19,6 @@ jQuery(function($){
   });
 });
   </script>
-
 <body>
 {% load humanize %}
 <center>

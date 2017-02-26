@@ -1,10 +1,17 @@
 {% load humanize %}
+
 <center><h1>Ledger</h1>
 <br>
+{% load static %}
 <html>
 <head>
-    <title>Ledger</title>
+    <title>Delete Page</title>
 </head>
+{% if theme == "1" %}
+<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_1.css' %}" />
+{% else %}
+<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_2.css' %}" />
+{% endif %}
 <body bgcolor="#ddfdff">
 {% if lists %}
 <style>
@@ -45,7 +52,7 @@ table, th, td {
 <br>
 <input type="submit" value="Submit">
 </form>
-<a href="{% url 'ledger:index' %}">Back</a>
+<a href="{% url 'ledger:index' theme %}">Back</a>
 {% else %} Nothing to see here!
 <a href="{% url 'ledger:index' %}">Get Back</a>
 {% endif %}
