@@ -1,0 +1,21 @@
+div.head{
+ border: 5px double black;
+ padding: 10px ;
+ background-color: #fdffea;
+}
+div.select_block{
+ width:40%;
+ float:left;
+ border: 5px double black;
+ padding: 20px ;
+ background-color:white;
+}
+h1 {
+ text-align: center;
+ text-decoration: underline;
+ color:black;   
+}
+body {
+ background: url('images/1.jpg');
+ background-size: cover;  
+}

@@ -3,7 +3,7 @@
 <head>
     <title>Ledger</title>
 </head>
-<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_1.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_2.css' %}" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -73,13 +73,13 @@ Note : <input type="text" name="add_note" required/> Money : <input type="number
 
 Date :<input type="text" name="date" id="datepicker" ><br><br>
 
-
 <input type="radio" name="money_type" value="in" required/>Income
 <input type="radio" name="money_type" value="ex" required/>Expense<br><br>
 <input type="submit" value="Submit" />
 </form>
 </div><br><br>
 
+<div class="wrapper">
 <div class="delete_block">
 <center>
 <b>Delete Note</b><br><br>
@@ -87,9 +87,22 @@ Date :<input type="text" name="date" id="datepicker" ><br><br>
 <input type="submit" value="Click">
 </form>
 </div>
-<br><br>
-<form action="{% url 'ledger:download' %}">
-<input type="submit" value="Export to .csv file">
+<div class="theme">
+<center>
+<b>Select Theme</b><br><br>
+<form action="{% url 'ledger:theme_select' %}">
+<input type="submit" value="Click">
 </form>
+</div>
+
+<br><br>
+<div class="download">
+<center>
+<b>Export to .csv</b><br><br>
+<form action="{% url 'ledger:download' %}">
+<input type="submit" value="Export">
+</form>
+</div>
+</div>
 </body>
 </html>

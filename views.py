@@ -93,3 +93,10 @@ def download(request):
             writer.writerow([note.pub_date,note.note_text,note.cost_value,'0'])
         
     return response
+
+def theme_select(request):
+    return render(request,'ledger/theme_page.html')
+
+def change_theme(request):
+    theme = request.POST['selected_theme']
+    

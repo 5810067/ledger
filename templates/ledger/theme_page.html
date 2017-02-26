@@ -1,0 +1,18 @@
+{% load static %}
+<html>
+<head><title>Theme Selection</title>
+<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_theme_page.css' %}" />
+</head>
+<body>
+<div class="head">
+<h1>Select Theme</h1>
+</div>
+<div class="select_block">
+<form action="{% url 'ledger:change_theme' %}" method="post">
+<input type="radio" name="seleced_theme" value="t1">Theme 1<br><br>
+<input type="radio" name="seleced_theme" value="t2">Theme 2
+
+</form> 
+</div>
+</body>
+</html>

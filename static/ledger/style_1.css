@@ -14,12 +14,29 @@ div.add_note{
  border: 5px double black;
  padding:10;   
 }
+div.wrapper{
+    width: 500px;
+    border: none;
+    overflow: none;
+    }
 div.delete_block{
- background-color:#c6ffe1;
- width:8%; border:
- 5px double black;
+ background-color:#eaf2ff;
+ width:30%; border:5px double black;
+ padding:10;
+ float:left;
+}
+div.theme{
+ float:right;
+ background-color:#eaf2ff;
+ width:30%; border:5px double black;
+ padding:10;
+}
+div.download{
+ background-color:#f7e6ee;
+ width:30%; border:5px double black;
  padding:10;   
 }
 body{
-    background-color:#ddfdff;
+    background: url("images/1.jpg");
+    background-size: cover;
 }
