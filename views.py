@@ -79,7 +79,6 @@ def total_in_and_ex():  # all income
     return total  # returnn total
     
 def download(request):
-    cost_value = 0
     # Create the HttpResponse object with the appropriate CSV header.
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="history.csv"'
@@ -88,8 +87,9 @@ def download(request):
     writer.writerow(['pub_date', 'note', 'income', 'expense'])
     for note in n:
         if(note.cost_value < 0):
-            cost_value = -note.cost_value
-            writer.writerow([note.pub_date,note.note_text,' ',cost_value])
+            value = -note.cost_value
+            writer.writerow([note.pub_date,note.note_text,'0',value])
         else:
-            writer.writerow([note.pub_date,note.note_text,cost_value,' '])
+            writer.writerow([note.pub_date,note.note_text,note.cost_value,'0'])
+        
     return response
