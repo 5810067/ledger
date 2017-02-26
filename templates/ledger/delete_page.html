@@ -1,0 +1,53 @@
+{% load humanize %}
+<center><h1>Ledger</h1>
+<br>
+<html>
+<head>
+    <title>Ledger</title>
+</head>
+<body bgcolor="#ddfdff">
+{% if lists %}
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+<form action="{% url 'ledger:verify' %}" method="post">
+{% csrf_token %}
+<table bgcolor="white" style="width:80% ; text-align:center;">
+    <th>Select</th>
+    <th bgcolor="#8fe0fc">Date</th>
+    <th bgcolor="#ffc691">Note</th>
+    <th bgcolor="#8ffc98">Income</th>
+    <th bgcolor="#fc8f8f">Expense</th>
+    
+{% for note in lists %}
+<tr>
+    <td><input type="radio" name="note_li" value={{note.id}} required>Delete</td>
+    <td bgcolor="#c9f1ff">{{note.pub_date}}</td>
+    <td>{{note.note_text}}</td>
+    
+    {% if note.cost_value < 0 %}
+    <td bgcolor="#ccffc1"> - </td>
+    <td bgcolor="#ffd1d1">{{note.cost_value|intcomma}} Bahts</td>
+    {% else %}
+    <td bgcolor="#ccffc1">{{note.cost_value|intcomma}} Bahts</td>
+    <td bgcolor="#ffd1d1"> - </td>
+    {% endif %}
+
+</tr>
+
+{% endfor %}
+
+</table>
+<br>
+<input type="submit" value="Submit">
+</form>
+<a href="{% url 'ledger:index' %}">Back</a>
+{% else %} Nothing to see here!
+<a href="{% url 'ledger:index' %}">Get Back</a>
+{% endif %}
+</body>
+</html>

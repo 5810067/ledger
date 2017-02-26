@@ -1,0 +1,52 @@
+{% load humanize %}
+<center><h1>Ledger</h1>
+<br>
+<html>
+<head>
+    <title>Ledger</title>
+</head>
+<body bgcolor="#ddfdff">
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+
+<form action="{% url 'ledger:del_list' lists.id %}" method="post">
+{% csrf_token %}
+<table bgcolor="white" style="width:80% ; text-align:center;">
+    <th bgcolor="#8fe0fc">Date</th>
+    <th bgcolor="#ffc691">Note</th>
+    <th bgcolor="#8ffc98">Income</th>
+    <th bgcolor="#fc8f8f">Expense</th>
+    
+
+<tr>
+    <td bgcolor="#c9f1ff">{{lists.pub_date}}</td>
+    <td>{{lists.note_text}}</td>
+    
+    {% if note.cost_value < 0 %}
+    <td bgcolor="#ccffc1"> - </td>
+    <td bgcolor="#ffd1d1">{{lists.cost_value|intcomma}} Bahts</td>
+    {% else %}
+    <td bgcolor="#ccffc1">{{lists.cost_value|intcomma}} Bahts</td>
+    <td bgcolor="#ffd1d1"> - </td>
+    {% endif %}
+
+</tr>
+
+
+
+</table>
+<br>
+<div style="border: 3px solid black; width:20%; padding:10;"><b><p style="font-size:20px; ">Are you sure to <span style="color:red">DELETE</span> ?</style><b>
+</div><br><br>
+<input type="submit" value="Yes"><br><br>
+</form>
+<form action="{% url 'ledger:edit_list' %}">
+    <input type="submit" value="No" />
+</form>
+
+</body>
+</html>

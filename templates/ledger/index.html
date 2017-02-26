@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Ledger</title>
+</head>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+jQuery(function($){
+    $( "#datepicker" ).datepicker({
+    dateFormat : 'yy-mm-dd'
+  });
+});
+  </script>
+
+<body bgcolor="#ddfdff">
+{% load humanize %}
+<center>
+<div style="background-color:#fdffea; width:90%; border: 5px dashed black; padding:10;">
+<center><h1><u>Ledger</u></h1>
+</div><br><br>
+<br>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+</style>
+<table bgcolor="white" style="width:90%; text-align:center;">
+    <th bgcolor="#8fe0fc">Date</th>
+    <th bgcolor="#ffc691">Note</th>
+    <th bgcolor="#8ffc98">Income</th>
+    <th bgcolor="#fc8f8f">Expense</th>
+    <th bgcolor="#ffc691">Total</th>
+{% if lists %}
+{% for note in lists %}
+<tr>
+    <td bgcolor="#c9f1ff">{{note.pub_date}}</td>
+    <td>{{note.note_text}}</td>
+    
+    {% if note.cost_value < 0 %}
+    <td bgcolor="#ccffc1"> - </td>
+    <td bgcolor="#ffd1d1">{{note.cost_value|intcomma}} Bahts</td>
+    {% else %}
+    <td bgcolor="#ccffc1">{{note.cost_value|intcomma}} Bahts</td>
+    <td bgcolor="#ffd1d1"> - </td>
+    {% endif %}
+    
+    <td style="border: 0px ; background-color:#fffdaf ;"></td>
+</tr>
+
+{% endfor %}
+<tr>
+    <td bgcolor="#8fe0fc" colspan="2">รวม</td>
+    <td bgcolor="#8ffc98">{{income|intcomma}} Bahts</td>
+    <td bgcolor="#fc8f8f">{{expense|intcomma}} Bahts</td>
+    <td bgcolor="#ffc691">{{balance|intcomma}} Bahts</td>
+</tr>
+{% else %}
+<tr>
+    <td colspan="5"><b>NOTHING TO SEE , ADD NOTE !!</b></td>
+   
+</tr>
+
+{% endif %}
+</table>
+
+<br><br>
+
+<div style="background-color:#c6ffe1; width:40%; border: 5px double black; padding:10;">
+<b>Add note</b>
+<br><br>
+<form action="{% url 'ledger:add_list' %}" method="post">
+{% csrf_token %}
+Note : <input type="text" name="add_note" required/> Money : <input type="number" name="add_money" min="0" required/><br><br>
+
+Date :<input type="text" name="date" id="datepicker" ><br><br>
+
+
+<input type="radio" name="money_type" value="in" required/>Income
+<input type="radio" name="money_type" value="ex" required/>Expense<br><br>
+<input type="submit" value="Submit" />
+</form>
+</div><br><br>
+
+<div style="background-color:#c6ffe1; width:8%; border: 5px double black; padding:10;">
+<center>
+<b>Delete Note</b><br><br>
+<form action="{% url 'ledger:edit_list' %}">
+<input type="submit" value="Click">
+</form>
+</div>
+<form action="{% url 'ledger:download' %}">
+<input type="submit" value="Export to .csv file">
+</form>
+</body>
+</html>
