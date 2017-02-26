@@ -2,6 +2,24 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+div.head{
+ background-color:#fdffea;
+ width:90%;
+ border: 5px dashed black;
+ padding:10;
+}
+div.add_note{
+ background-color:#c6ffe1;
+ width:40%;
+ border: 5px double black;
+ padding:10;   
+}
+div.delete_block{
+ background-color:#c6ffe1;
+ width:8%; border:
+ 5px double black;
+ padding:10;   
+}
 body{
-    bgcolor:#ddfdff;
+    background-color:#ddfdff;
 }

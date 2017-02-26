@@ -1,8 +1,9 @@
+{% load static %}
 <html>
 <head>
     <title>Ledger</title>
 </head>
-
+<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_1.css' %}" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -15,19 +16,13 @@ jQuery(function($){
 });
   </script>
 
-<body bgcolor="#ddfdff">
+<body>
 {% load humanize %}
 <center>
-<div style="background-color:#fdffea; width:90%; border: 5px dashed black; padding:10;">
+<div class="head">
 <center><h1><u>Ledger</u></h1>
 </div><br><br>
 <br>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-</style>
 <table bgcolor="white" style="width:90%; text-align:center;">
     <th bgcolor="#8fe0fc">Date</th>
     <th bgcolor="#ffc691">Note</th>
@@ -69,7 +64,7 @@ table, th, td {
 
 <br><br>
 
-<div style="background-color:#c6ffe1; width:40%; border: 5px double black; padding:10;">
+<div class="add_note">
 <b>Add note</b>
 <br><br>
 <form action="{% url 'ledger:add_list' %}" method="post">
@@ -85,7 +80,7 @@ Date :<input type="text" name="date" id="datepicker" ><br><br>
 </form>
 </div><br><br>
 
-<div style="background-color:#c6ffe1; width:8%; border: 5px double black; padding:10;">
+<div class="delete_block">
 <center>
 <b>Delete Note</b><br><br>
 <form action="{% url 'ledger:edit_list' %}">
