@@ -6,8 +6,6 @@ from django.utils import timezone
 from .models import Note
 import csv
 
-theme = '1'
-
 def index(request,theme):
     # get object
     lists = Note.objects.order_by('pub_date')
@@ -19,7 +17,7 @@ def index(request,theme):
                'income':income,'expense':expense,'theme':theme}
     return render(request, 'ledger/index.html',context)
     
-def add_list(request):  # add note 
+def add_list(request,theme):  # add note 
     # request all POST value
     new_note = request.POST['add_note']  # note's text 
     new_money = request.POST['add_money']  # money
@@ -32,31 +30,29 @@ def add_list(request):  # add note
     total = total_money() + int(new_money)
     
    # re_balance(time)
-    
     getnote = Note(note_text=new_note,cost_value=new_money,
                    cost_total=total,pub_date=time)
     getnote.save()
-    print(timezone.now())
-    return HttpResponseRedirect(reverse('ledger:index'))
+    return HttpResponseRedirect(reverse('ledger:index',args=(theme,)))
 
-def verify(request):
+def verify(request,theme):
     q = request.POST['note_li']  # get list of selected note's id
     lists = Note.objects.get(pk=q)
     total_index = total_money()  # all money
-    context = {'lists':lists,'total_index':total_index}
+    context = {'lists':lists,'total_index':total_index,'theme':theme}
     return render(request,'ledger/verify_page.html',context)
 
-def edit_list(request):  # use to view edit page
+def edit_list(request,theme):  # use to view edit page
     lists = Note.objects.order_by('pub_date')  # get obj. and order by date
     total_index = total_money()  # all money
     context = {'lists':lists,'total_index':total_index,'theme':theme}
     return render(request,'ledger/delete_page.html',context)
 
-def del_list(request, note_id):  # delete note
+def del_list(request, theme, note_id):  # delete note
     q = Note.objects.get(pk=note_id)
     q.delete()
     # redirect to edit page
-    return HttpResponseRedirect(reverse('ledger:edit_list'))
+    return HttpResponseRedirect(reverse('ledger:edit_list',args=(theme,)))
                   
 def total_money():  # all money 
     total = 0  # set default to 0
@@ -96,8 +92,8 @@ def download(request):
         
     return response
 
-def theme_select(request):
-    return render(request,'ledger/theme_page.html')
+def theme_select(request,theme):
+    return render(request,'ledger/theme_page.html',{'theme':theme})
 
 def change_theme(request):
     theme = request.POST['selected_theme']

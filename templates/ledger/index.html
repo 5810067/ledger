@@ -1,13 +1,10 @@
 {% load static %}
+{% load humanize %}
 <html>
 <head>
     <title>Ledger</title>
 </head>
-{% if theme == "1" %}
-    <link rel="stylesheet" type="text/css" href="{% static 'ledger/style_1.css' %}" />
-{% else %}
-    <link rel="stylesheet" type="text/css" href="{% static 'ledger/style_2.css' %}" />
-{% endif %}
+<link rel="stylesheet" type="text/css" href='{% static "" %}/ledger/{{ theme }}.css' />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -20,7 +17,6 @@ jQuery(function($){
 });
   </script>
 <body>
-{% load humanize %}
 <center>
 <div class="head">
 <center><h1><u>Ledger</u></h1>
@@ -70,7 +66,7 @@ jQuery(function($){
 <div class="add_note">
 <b>Add note</b>
 <br><br>
-<form action="{% url 'ledger:add_list' %}" method="post">
+<form action="{% url 'ledger:add_list' theme %}" method="post">
 {% csrf_token %}
 Note : <input type="text" name="add_note" required/> Money : <input type="number" name="add_money" min="0" required/><br><br>
 
@@ -86,14 +82,14 @@ Date :<input type="text" name="date" id="datepicker" ><br><br>
 <div class="delete_block">
 <center>
 <b>Delete Note</b><br><br>
-<form action="{% url 'ledger:edit_list' %}">
+<form action="{% url 'ledger:edit_list' theme %}">
 <input type="submit" value="Click">
 </form>
 </div>
 <div class="theme">
 <center>
 <b>Select Theme</b><br><br>
-<form action="{% url 'ledger:theme_select' %}">
+<form action="{% url 'ledger:theme_page' theme %}">
 <input type="submit" value="Click">
 </form>
 </div>

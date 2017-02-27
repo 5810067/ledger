@@ -1,5 +1,4 @@
 {% load humanize %}
-
 <center><h1>Ledger</h1>
 <br>
 {% load static %}
@@ -7,21 +6,10 @@
 <head>
     <title>Delete Page</title>
 </head>
-{% if theme == "1" %}
-<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_1.css' %}" />
-{% else %}
-<link rel="stylesheet" type="text/css" href="{% static 'ledger/style_2.css' %}" />
-{% endif %}
+<link rel="stylesheet" type="text/css" href='{% static "" %}/ledger/{{ theme }}.css' />
 <body bgcolor="#ddfdff">
 {% if lists %}
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-</style>
-
-<form action="{% url 'ledger:verify' %}" method="post">
+<form action="{% url 'ledger:verify' theme %}" method="post">
 {% csrf_token %}
 <table bgcolor="white" style="width:80% ; text-align:center;">
     <th>Select</th>

@@ -10,10 +10,13 @@
 <div class="select_block">
 <form action="{% url 'ledger:change_theme' %}" method="post">
 {% csrf_token %}
-<input type="radio" name="selected_theme" value="1">Theme 1<br><br>
-<input type="radio" name="selected_theme" value="2">Theme 2
+<input type="radio" name="selected_theme" value="style1" required>Theme 1<br><br>
+<input type="radio" name="selected_theme" value="style2" required>Theme 2<br><br>
 <input type="submit" value="Submit">
 </form> 
+<form action="{% url 'ledger:index' theme %}">
+<input type="submit" value="Back">
+</form>
 </div>
 </body>
 </html>
