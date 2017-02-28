@@ -8,14 +8,14 @@ table, th, td {
 }
 
 div.head{
- background-color:white;
+ background-color:#d8e7ff;
  width:90%;
  border: 5px dashed black;
  padding:10;
 }
 
 div.add_note{
- background-color:white;
+ background-color:#d8e7ff;
  width:40%;
  border: 5px double black;
  padding:10;   
@@ -28,7 +28,7 @@ div.wrapper{
 }
     
 div.delete_block{
- background-color:white;
+ background-color:#eaf2ff;
  width:30%; 
  border:5px double black;
  padding:10;
@@ -37,7 +37,7 @@ div.delete_block{
 
 div.theme{
  float:right;
- background-color:white;
+ background-color:#eaf2ff;
  width:30%; 
  border:5px double black;
  padding:10;
@@ -45,13 +45,13 @@ div.theme{
 
 div.download{
  float: center;
- background-color:white;
+ background-color:#d8e7ff;
  width:20%; 
  border:5px double black;
  padding:10;   
 }
 
 body{
-    background: url("images/4.jpeg");
+    background: url("images/1.jpg");
     background-size: cover;
 }

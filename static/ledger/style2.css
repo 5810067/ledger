@@ -1,50 +1,51 @@
-h1 {
- text-align: center;
- color:white;
- 
-}
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-div.head{
- background-color:#fdffea;
- width:90%;
- border: 5px dashed black;
- padding:10;
-}
-div.add_note{
- background-color:#c6ffe1;
- width:40%;
- border: 5px double black;
- padding:10;   
-}
-div.wrapper{
-    width: 800px;
-    border: none;
-    overflow: none;
+    h1 {
+    text-align: center;
+    color:black;
+    
     }
-div.delete_block{
- background-color:#eaf2ff;
- width:30%; border:
- 5px double black;
- padding:10;
- float:left;
-}
-div.theme{
- float:right;
- background-color:#eaf2ff;
- width:30%; border:
- 5px double black;
- padding:10;
-}
-div.download{
- float: center;
- background-color:#f7e6ee;
- width:20%; border:5px double black;
- padding:10;   
-}
-body{
-    background: url("images/2.jpeg");
-    background-size: cover;
-}
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    div.head{
+    background-color:#ceffcf;
+    width:90%;
+    border: 5px dashed black;
+    padding:10;
+    }
+    div.add_note{
+    background-color:#f7e6ee;
+    width:40%;
+    border: 5px double black;
+    padding:10;   
+    }
+    div.wrapper{
+        width: 800px;
+        border: none;
+        overflow: none;
+        }
+    div.delete_block{
+    background-color:#f7e6ee;
+    width:30%; border:
+    5px double black;
+    padding:10;
+    float:left;
+    }
+    div.theme{
+    float:right;
+    background-color:#f7e6ee;
+    width:30%; 
+    border:5px double black;
+    padding:10;
+    }
+    div.download{
+    float: center;
+    background-color:#f7e6ee;
+    width:20%; 
+    border:5px double black;
+    padding:10;   
+    }
+    body{
+        background: url("images/2.jpeg");
+        background-size: cover;
+    }

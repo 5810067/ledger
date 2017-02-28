@@ -69,9 +69,7 @@ jQuery(function($){
 <form action="{% url 'ledger:add_list' theme %}" method="post">
 {% csrf_token %}
 Note : <input type="text" name="add_note" required/> Money : <input type="number" name="add_money" min="0" required/><br><br>
-
-Date :<input type="text" name="date" id="datepicker" ><br><br>
-
+Date : <input type="text" name="date" id="datepicker" ><br><br>
 <input type="radio" name="money_type" value="in" required/>Income
 <input type="radio" name="money_type" value="ex" required/>Expense<br><br>
 <input type="submit" value="Submit" />

@@ -12,6 +12,7 @@
 {% csrf_token %}
 <input type="radio" name="selected_theme" value="style1" required>Theme 1<br><br>
 <input type="radio" name="selected_theme" value="style2" required>Theme 2<br><br>
+<input type="radio" name="selected_theme" value="style3" required>Theme 3<br><br>
 <input type="submit" value="Submit">
 </form> 
 <form action="{% url 'ledger:index' theme %}">
